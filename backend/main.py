@@ -8,7 +8,7 @@ app = FastAPI()
 # CORS configuration (Allow requests from GitHub Pages)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://gwapobenjie.github.io"],  # your GitHub Pages domain
+    allow_origins=["http://localhost:5173", "https://gwapobenjie.github.io"],  # add both for dev + prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -55,11 +55,15 @@ def update_task(task_id: int, task: TaskUpdate):
             if task.completed is not None:
                 t.completed = task.completed
             return t
-    return {"error": "Task not found"}
+    raise HTTPException(status_code=404, detail="Task not found")
 
 # DELETE task
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
     global tasks
-    tasks = [task for task in tasks if task.id != task_id]
-    return {"message": "Task deleted successfully"}
+    for t in tasks:
+        if t.id == task_id:
+            tasks = [task for task in tasks if task.id != task_id]
+            return {"message": "Task deleted successfully"}
+    raise HTTPException(status_code=404, detail="Task not found")
+
