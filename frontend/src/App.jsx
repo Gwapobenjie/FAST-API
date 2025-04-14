@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API_BASE = "https://todo-fastapi-6rwp.onrender.com";
+const API_BASE = "https://fastapi2-66r3.onrender.com";
 
 function App() {
   const [tasks, setTasks] = useState([]);
