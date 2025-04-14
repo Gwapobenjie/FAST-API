@@ -67,3 +67,8 @@ def delete_task(task_id: int):
             return {"message": "Task deleted successfully"}
     raise HTTPException(status_code=404, detail="Task not found")
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the FastAPI app!"}
+
+
