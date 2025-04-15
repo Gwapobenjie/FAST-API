@@ -5,10 +5,15 @@ from typing import List, Optional
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:5173",
+    "https://gwapobenjie.github.io",  # if using GitHub Pages
+    "*"  # for development/testing, use specific domains in production!
+]
 # CORS configuration (Allow requests from GitHub Pages)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "https://gwapobenjie.github.io"],  # add both for dev + prod
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
