@@ -7,7 +7,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5173",
-    "https://gwapobenjie.github.io",  # if using GitHub Pages
+    "https://github.com/Gwapobenjie/FAST-API",  # if using GitHub Pages
     "*"  # for development/testing, use specific domains in production!
 ]
 # CORS configuration (Allow requests from GitHub Pages)
