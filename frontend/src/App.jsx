@@ -40,6 +40,7 @@ function App() {
       return;
     }
 
+
     axios
       .post(`${API_BASE}/tasks/`, { title: newTask, completed: false })
       .then((response) => {
@@ -57,6 +58,7 @@ function App() {
       });
   };
 
+  
   const deleteTask = (id) => {
     axios
       .delete(`${API_BASE}/tasks/${id}`)
